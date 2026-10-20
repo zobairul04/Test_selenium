@@ -1,11 +1,11 @@
 import { Builder, By } from "selenium-webdriver";
-
+import { Base } from "./base.js";
 console.log("Starting the test...");
 
-class LoginPage {
+class LoginPage extends Base {
     constructor() {
-        this.driver = new Builder().forBrowser("chrome").build();
-
+        
+        super();
 
         // login locators
         this.loginlink = By.xpath("//a[@class='ico-login']");
@@ -14,13 +14,6 @@ class LoginPage {
         this.rememberme = By.id("RememberMe");
         this.loginbutton = By.xpath("//input[@class='button-1 login-button']");
     }       
-
-    async openBrowser() {
-        console.log("Opening browser...");
-        await this.driver.get('https://demowebshop.tricentis.com/register/');
-        await this.driver.manage().window().maximize(); 
-
-    }
 
    
 
@@ -49,33 +42,9 @@ class LoginPage {
         await this.driver.findElement(this.loginbutton).click();
     }
 
-    // async closeBrowser() {
-    //     console.log("Closing browser...");
-    //     await this.driver.quit();
-    // }
+ 
 
 }
 
 export { LoginPage };
 
-// shorai niya test a disi
-
-
-// const base = new Base();
-// await base.openBrowser();
-
-
-
-// await base.clickLoginLink();
-// await base.enterLoginEmail("joh223451@example.com");
-// await base.enterLoginPassword("Password123");
-// await base.clickRememberMe();
-// await base.clickLoginButton();
-
-
-
-
-// Result দেখার জন্য ৩ সেকেন্ড অপেক্ষা করবে
-// await base.driver.sleep(3000);
-
-// await base.closeBrowser();

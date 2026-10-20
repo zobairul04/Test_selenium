@@ -1,9 +1,10 @@
 import { Builder, By } from "selenium-webdriver";
-
+import { Base } from "./base.js";
 console.log("Starting the test...");
 
-class SignupPage {
+class SignupPage extends Base {
     constructor() {
+        super();
         this.driver = new Builder().forBrowser("chrome").build();
         this.registerlink = By.xpath("//a[@class='ico-register']");
         this.gender = By.id("gender-male");
@@ -16,12 +17,6 @@ class SignupPage {
         
     }       
 
-    async openBrowser() {
-        console.log("Opening browser...");
-        await this.driver.get('https://demowebshop.tricentis.com/register/');
-        await this.driver.manage().window().maximize(); 
-
-    }
 
     async clickRegisterLink() {
         console.log("Clicking on the register link...");
@@ -69,26 +64,3 @@ class SignupPage {
 
 export { SignupPage };
 
-// shorai niya test a disi
-
-
-// const base = new Base();
-
-// await base.openBrowser();
-// await base.clickRegisterLink();
-// await base.selectGender();
-// await base.enterFirstName("John");
-// await base.enterLastName("Doe");
-// await base.enterEmail("joh223451@example.com");
-// await base.enterPassword("Password123");
-// await base.confirm_password("Password123");
-// await base.clickRegisterButton();
-
-
-
-
-
-// Result দেখার জন্য ৩ সেকেন্ড অপেক্ষা করবে
-// await base.driver.sleep(3000);
-
-// await base.closeBrowser();
